@@ -10,18 +10,38 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
+ * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails
- * @version 3.7.0
+ * @version 9.8.0
  */
+
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
 
 defined('ABSPATH') || exit;
 
 $text_align = is_rtl() ? 'right' : 'left';
 
+$email_improvements_enabled = FeaturesUtil::feature_is_enabled('email_improvements');
+$heading_class = $email_improvements_enabled ? 'email-order-detail-heading' : '';
+$order_table_class = $email_improvements_enabled ? 'email-order-details' : '';
+$order_total_text_align = $email_improvements_enabled ? 'right' : 'left';
+
+if ($email_improvements_enabled) {
+	add_filter('woocommerce_order_shipping_to_display_shipped_via', '__return_false');
+}
+
+/**
+ * Action hook to add custom content before order details in email.
+ *
+ * @param WC_Order $order Order object.
+ * @param bool     $sent_to_admin Whether it's sent to admin or customer.
+ * @param bool     $plain_text Whether it's a plain text email.
+ * @param WC_Email $email Email object.
+ * @since 2.5.0
+ */
 do_action('woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text, $email); ?>
 
-<h2>
+<h2 class="<?php echo esc_attr($heading_class); ?>">
 	<?php
 	if ($sent_to_admin) {
 		$before = '<a class="link" href="' . esc_url($order->get_edit_order_url()) . '">';
@@ -36,7 +56,7 @@ do_action('woocommerce_email_before_order_table', $order, $sent_to_admin, $plain
 </h2>
 
 <div style="margin-bottom: 40px;">
-	<table class="td" cellspacing="0" cellpadding="6"
+	<table class="td font-family <?php echo esc_attr($order_table_class); ?>" cellspacing="0" cellpadding="6"
 		style="width: 100%; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;" border="1">
 		<thead>
 			<tr>
@@ -79,7 +99,7 @@ do_action('woocommerce_email_before_order_table', $order, $sent_to_admin, $plain
 							style="text-align:<?php echo esc_attr($text_align); ?>; <?php echo (1 === $i) ? 'border-top-width: 4px;' : ''; ?>">
 							<?php echo wp_kses_post($total['label']); ?>
 						</th>
-						<td class="td"
+						<td class="td text-align-<?php echo esc_attr($order_total_text_align); ?>"
 							style="text-align:<?php echo esc_attr($text_align); ?>; <?php echo (1 === $i) ? 'border-top-width: 4px;' : ''; ?>">
 							<?php echo wp_kses_post($total['value']); ?>
 						</td>
