@@ -12,7 +12,7 @@ function getCouponValue() {
 (function ($) {
   let isSubscription = false;
   $('.wcsatt-options-prompt-action-input').change(function () {
-    let value = $(this).val();
+    const value = $(this).val();
     isSubscription = value === 'yes' ? true : false;
   });
 
@@ -22,7 +22,7 @@ function getCouponValue() {
     function (e) {
       e.preventDefault();
 
-      let $buttonClicked = $(this),
+      const $buttonClicked = $(this),
         currentQuantity = parseInt(
           $buttonClicked.attr('data-product-current-quantity')
         );
@@ -32,7 +32,7 @@ function getCouponValue() {
         return;
       }
 
-      let productId = parseInt(this.dataset.productid),
+      const productId = parseInt(this.dataset.productid),
         quantityToAdd = parseInt($('.numberOfProducts').text());
 
       addToCartFromSingleProductPage(
@@ -63,7 +63,7 @@ function getCouponValue() {
 
       $(currentQuantityEl).text(currentQuantity + 1);
 
-      let data = {
+      const data = {
         action: 'woocommerce_ajax_add_to_cart',
         product_id: productId,
         product_sku: '',
@@ -109,7 +109,7 @@ function getCouponValue() {
   $(document).on('click', '.remove-final, .add-final', function (e) {
     e.preventDefault();
 
-    let $buttonClicked = $(this);
+    const $buttonClicked = $(this);
 
     $buttonClicked.addClass('disabled');
     $('.cart-amount').addClass('blue');
@@ -124,12 +124,13 @@ function getCouponValue() {
       cartItemKey =
         productType === 'subscription'
           ? $('.id-' + productId + '.subscription').attr('id')
-          : $('.id-' + productId + '.one-time').attr('id');
-    let currentQuantityClass = $(
+          : $('.id-' + productId + '.one-time').attr('id'),
+      currentQuantityClass = $(
         '.product-quantity-' + productId + '.' + productType
       ),
-      currentQuantity = parseInt(currentQuantityClass.text()),
-      updatedQuantity = currentQuantity,
+      currentQuantity = parseInt(currentQuantityClass.text());
+
+    let updatedQuantity = currentQuantity,
       cartQuantity = parseInt($('.cart-quantity').text());
 
     switch (operator) {
@@ -297,7 +298,7 @@ function getCouponValue() {
     function (e) {
       e.preventDefault();
 
-      let $buttonClicked = $(this);
+      const $buttonClicked = $(this);
 
       $buttonClicked.addClass('disabled');
       $('.cart-amount').addClass('blue');
@@ -308,10 +309,11 @@ function getCouponValue() {
 
       const productId = $buttonClicked.attr('data-productid'),
         operator = $buttonClicked.attr('data-operator'),
-        cartItemKey = $buttonClicked.attr('data-cart-item-key');
-      let cartQuantity = parseInt($('.count').html()),
+        cartItemKey = $buttonClicked.attr('data-cart-item-key'),
         currentQuantityElement = '.product-quantity-' + productId,
-        currentQuantity = parseInt($(currentQuantityElement).text()),
+        currentQuantity = parseInt($(currentQuantityElement).text());
+
+      let cartQuantity = parseInt($('.count').html()),
         updatedQuantity = currentQuantity;
 
       switch (operator) {
@@ -397,7 +399,7 @@ function getCouponValue() {
             .attr('data-current-quantity', updatedQuantity)
             .attr('data-quantity-to-display', updatedQuantity);
 
-          let $addToCartButton = $('.single-product-add-to-cart-button');
+          const $addToCartButton = $('.single-product-add-to-cart-button');
           $addToCartButton.attr(
             'data-product-current-quantity',
             updatedQuantity
@@ -420,9 +422,9 @@ function getCouponValue() {
     currentQuantity,
     $buttonClicked
   ) {
-    let productType = $buttonClicked.data('product-type');
-    let isSubscription = productType == 'subscription' ? true : false;
-    let subscriptionData = isSubscription
+    const productType = $buttonClicked.data('product-type');
+    const isSubscription = productType == 'subscription' ? true : false;
+    const subscriptionData = isSubscription
         ? {
             'subscribe-to-action-input': 'yes',
             ['convert_to_sub_dropdown' + productId]: '1_month',
@@ -487,7 +489,7 @@ function getCouponValue() {
     currentQuantity,
     $buttonClicked
   ) {
-    let subscriptionData = isSubscription
+    const subscriptionData = isSubscription
         ? {
             'subscribe-to-action-input': 'yes',
             ['convert_to_sub_dropdown' + productId]: '1_month',
@@ -518,12 +520,12 @@ function getCouponValue() {
       success: function (response) {
         $('.product-quantity-' + productId).text(quantityToAdd);
 
-        let minusButton = $('.remove-final-single-product'),
+        const minusButton = $('.remove-final-single-product'),
           plusButton = $('.add-final-single-product');
 
         minusButton.removeClass('disabled');
 
-        let productInfoClass = $('#one-time-product-info');
+        const productInfoClass = $('#one-time-product-info');
         if (isSubscription) {
           productInfoClass = $('#subscription-product-info');
         }
@@ -554,8 +556,8 @@ function getCouponValue() {
   }
 
   function updateShippingMethods(subtotalParsed, discount) {
-    const customCheckClass = 'custom-check';
-    let freeShippingInput = $('#shipping_method_0_free_shipping6'),
+    const customCheckClass = 'custom-check',
+      freeShippingInput = $('#shipping_method_0_free_shipping6'),
       freeShippingLabel = $('label[for=shipping_method_0_free_shipping6]'),
       standardShippingInput = $('#shipping_method_0_flat_rate3'),
       standardShippingLabel = $('label[for=shipping_method_0_flat_rate3]'),

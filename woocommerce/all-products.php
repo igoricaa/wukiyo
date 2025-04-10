@@ -1,6 +1,5 @@
 <div class="products-wrapper">
     <div class="row">
-
         <?php
         $esse_id = 26;
         $apex_id = 350;
@@ -156,7 +155,7 @@
 </div>
 
 <script>
-    let esseId = 26,
+    const esseId = 26,
         apexId = 350,
         pureId = 359,
         vertId = 361,
@@ -164,17 +163,17 @@
 
     $(document).ready(function () {
         $(document).click(function (event) {
-            let $target = $(event.target);
+            const $target = $(event.target);
 
-            let animatedCard = $('.product-card-inner-wrapper.product-added');
+            const animatedCard = $('.product-card-inner-wrapper.product-added');
             if (animatedCard.length > 0 && !animatedCard.has($target).length) {
-                let productId = parseInt(animatedCard.attr('data-productid'));
+                const productId = parseInt(animatedCard.attr('data-productid'));
                 removeProductCardAnimations(productId);
             }
         });
 
         $('.archive-add-to-cart-button').on('click', function () {
-            let cartAmount = $('.cart-amount');
+            const cartAmount = $('.cart-amount');
             cartAmount.toggleClass('opacity').addClass('blue');
             $('.cartText').text('Checkout');
 
@@ -188,12 +187,12 @@
         });
 
         $('.remove-product-added-desktop, .remove-product-added-mobile').click(function () {
-            let productId = $(this).parent().data('productid');
+            const productId = $(this).parent().data('productid');
             removeProductCardAnimations(productId);
         });
 
         $('#add-to-cart-26, #add-to-cart-350, #add-to-cart-359, #add-to-cart-361, #add-to-cart-356').click(function () {
-            let addToCartButton = $(this),
+            const addToCartButton = $(this),
                 whiteLogoUrl = getWhiteLogoUrl(addToCartButton.data('productid')),
                 productCardWrapper = addToCartButton.closest('.product-card-inner-wrapper'),
                 alreadyAnimatedCardId = parseInt($('.product-card-inner-wrapper.product-added').attr('data-productid'));

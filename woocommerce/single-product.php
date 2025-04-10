@@ -80,13 +80,13 @@ do_action('woocommerce_after_main_content');
 
 <script>
 	$(document).ready(function () {
-		let esseId = 26,
+		const esseId = 26,
 			apexId = 350,
 			blissId = 356,
 			pureId = 359,
 			vertId = 361;
 
-		let productId = <?php echo $productId ?>;
+		const productId = <?php echo $productId ?>;
 
 		$('.single-add-to-cart-button').on('click', function () {
 			const cartAmount = $('.cart-amount');
@@ -102,7 +102,7 @@ do_action('woocommerce_after_main_content');
 			}, 1000);
 		});
 
-		let authorInputField = $('input[id="author"]'),
+		const authorInputField = $('input[id="author"]'),
 			emailInputField = $('input[id="email"]');
 		if (authorInputField.length > 0 && emailInputField.length > 0) {
 			authorInputField.attr("placeholder", "Name");
@@ -119,7 +119,7 @@ do_action('woocommerce_after_main_content');
 
 		// TODO: ubaci u funkciju
 		// Replacing prices on payment method change, both standard and sale prices
-		let standardPriceElement = $('.price-and-quantity ins .woocommerce-Price-amount'),
+		const standardPriceElement = $('.price-and-quantity ins .woocommerce-Price-amount'),
 			salePriceElement = $('.price-and-quantity del .woocommerce-Price-amount'),
 			standardProductPrice = getStandardProductPrice(),
 			subscriptionProductPrice = getSubscriptionProductPrice(),
@@ -140,17 +140,17 @@ do_action('woocommerce_after_main_content');
 		});
 
 		function setStandardProductPrice() {
-			let newStandardPriceString = standardPriceElement.html().replace(subscriptionProductPrice, standardProductPrice);
+			const newStandardPriceString = standardPriceElement.html().replace(subscriptionProductPrice, standardProductPrice);
 			standardPriceElement.html(newStandardPriceString);
 
-			let newSalePriceString = salePriceElement.html().replace(standardProductPrice, standardSalePriceNumber);
+			const newSalePriceString = salePriceElement.html().replace(standardProductPrice, standardSalePriceNumber);
 			salePriceElement.html(newSalePriceString);
 		}
 		function setSubscriptionProductPrice() {
-			let newPriceString = standardPriceElement.html().replace(standardProductPrice, subscriptionProductPrice);
+			const newPriceString = standardPriceElement.html().replace(standardProductPrice, subscriptionProductPrice);
 			standardPriceElement.html(newPriceString);
 
-			let newSalePriceString = salePriceElement.html().replace(standardSalePriceNumber, standardProductPrice);
+			const newSalePriceString = salePriceElement.html().replace(standardSalePriceNumber, standardProductPrice);
 			salePriceElement.html(newSalePriceString);
 		}
 
@@ -187,7 +187,7 @@ do_action('woocommerce_after_main_content');
 			}
 		}
 
-		let backToTopCircleBtn = $('#back-to-top-circle');
+		const backToTopCircleBtn = $('#back-to-top-circle');
 		$(window).scroll(function () {
 			if ($(window).scrollTop() > 300) {
 				backToTopCircleBtn.addClass('show');
@@ -215,15 +215,15 @@ do_action('woocommerce_after_main_content');
 
 		let isSubscription = false;
 		$('.wcsatt-options-prompt-action-input').change(function () {
-			let value = $(this).val();
+			const value = $(this).val();
 			isSubscription = value === 'yes' ? true : false;
 
-			let productType = isSubscription ? subscriptionString : oneTimeString;
+			const productType = isSubscription ? subscriptionString : oneTimeString;
 			setProductInfo(productType);
 		});
 
 		function setProductInfo(productType) {
-			let productInfoElement = productType === oneTimeString ? $('#one-time-product-info') : $('#subscription-product-info'),
+			const productInfoElement = productType === oneTimeString ? $('#one-time-product-info') : $('#subscription-product-info'),
 				addToCartButton = $('.single-add-to-cart-button');
 
 			addToCartButton.attr('data-product-current-quantity', productInfoElement.attr('data-current-quantity')).removeClass('disabled');
@@ -234,7 +234,7 @@ do_action('woocommerce_after_main_content');
 				addToCartButton.text('CHECKOUT');
 			}
 
-			let plusButton = $('.add-final-single-product'),
+			const plusButton = $('.add-final-single-product'),
 				minusButton = $('.remove-final-single-product');
 			plusButton.attr('data-cart-item-key', productInfoElement.attr('data-cart-item-key'));
 			minusButton.attr('data-cart-item-key', productInfoElement.attr('data-cart-item-key'));
