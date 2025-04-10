@@ -1709,13 +1709,6 @@ ins .woocommerce-Price-amount {
 .page-template-login_tpl {
   background-color: #e0e4e9;
 }
-/* TODO: sredi lepo */
-.page-template-my-account_tpl #page,
-.page-template-register_tpl #page,
-.page-template-login_tpl #page {
-  min-height: 100%;
-  position: relative;
-}
 .page-template-my-account_tpl footer,
 .page-template-register_tpl footer,
 .page-template-login_tpl footer {
@@ -1723,8 +1716,6 @@ ins .woocommerce-Price-amount {
 }
 .page-template-register_tpl footer,
 .page-template-login_tpl footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 .register-container,
@@ -1734,7 +1725,6 @@ ins .woocommerce-Price-amount {
   background-size: contain;
   background-position: right, bottom;
   width: 100%;
-  padding-bottom: 310px !important;
 }
 .my-account h2,
 .register-title,
@@ -2380,23 +2370,14 @@ span.optional {
   }
 }
 @media screen and (min-width: 992px) {
-  .page-template-login_tpl #page,
-  .page-template-register_tpl #page {
-    display: flex;
-  }
+  .page-template-my-account_tpl .page-content,
   .page-template-login_tpl .page-content,
   .page-template-register_tpl .page-content {
-    display: flex;
     width: 100%;
+    min-height: calc(100vh - 335.5px);
   }
   .page-template-my-account_tpl footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
-  }
-  /* TODO - sredi ovo PADDING-FOOTER */
-  .my-acc-save-address-wrapper {
-    padding-bottom: 250px;
   }
 }
 @media screen and (max-width: 992px) {
