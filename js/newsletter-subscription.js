@@ -28,8 +28,8 @@
   });
 
   function isNewsletterFormValid() {
-    let validEmail = checkEmailNewsletter($('.newsletter-email-input'));
-    let validName = checkNameNewsletter($('.newsletter-name-input'));
+    const validEmail = checkEmailNewsletter($('.newsletter-email-input'));
+    const validName = checkNameNewsletter($('.newsletter-name-input'));
     if (validEmail && validName) {
       return true;
     }
@@ -37,7 +37,8 @@
   }
 
   function submitNewsletterForm() {
-    let newsletterForm = $('.newsletter-form');
+    const newsletterForm = $('.newsletter-form');
+
     $.ajax({
       type: 'GET',
       url: newsletterForm.attr('action'),
