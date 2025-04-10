@@ -42,7 +42,8 @@
 			<div class="logos-column">
 				<div class="logo-container">
 					<a href="<?php echo get_home_url(); ?>">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/logos/wukiyo-everything.svg" alt="Everything you can be">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/logos/wukiyo-everything.svg"
+							alt="Everything you can be">
 					</a>
 				</div>
 				<div>
@@ -52,19 +53,22 @@
 		</div>
 		<div class="disclaimer-row">
 			<p>
-				These statements have not been evaluated by the Food and Drug Administration. The products and information on this website are not intended to diagnose, treat, cure or prevent any disease.
+				These statements have not been evaluated by the Food and Drug Administration. The products and
+				information on this website are not intended to diagnose, treat, cure or prevent any disease.
 			</p>
 		</div>
 	</div>
 	<div class="footer-wrapper-mobile">
 		<div class="logo-container">
 			<a href="<?php echo get_home_url(); ?>">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/logos/wukiyo-everything-white.svg" alt="Everything you can be">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/logos/wukiyo-everything-white.svg"
+					alt="Everything you can be">
 			</a>
 		</div>
 		<div class="statement">
 			<p>
-				These statements have not been evaluated by the Food and Drug Administration. The products and information on this website are not intended to diagnose, treat, cure or prevent any disease.
+				These statements have not been evaluated by the Food and Drug Administration. The products and
+				information on this website are not intended to diagnose, treat, cure or prevent any disease.
 			</p>
 		</div>
 		<div class="revelation-row gray-bck sitePaddingNarrow">
@@ -86,8 +90,8 @@
 	</div>
 </footer>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('.toggleAccordion').on('click', function() {
+	$(document).ready(function () {
+		$('.toggleAccordion').on('click', function () {
 			let accordion = $(this);
 
 			if (accordion.hasClass('active')) {

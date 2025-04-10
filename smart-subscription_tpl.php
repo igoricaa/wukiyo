@@ -15,23 +15,24 @@
  * @version 3.4.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 get_header();
 
 ?>
 <div class="archive-page-wrapper sitePadding headerPadding">
-	<div class="archive-title">
+    <div class="archive-title">
         <h1><span class="border-bottom-short"></span>A Smarter Subscription</h1>
         <p>Members get exclusive 10% off.<br>
-        Pick your products and select Subscribe and Save at checkout.<br><br class="d-none d-md-block">
-        Get a confirmation email each time your WUKIYO® subscription is scheduled to ship.<br><br class="d-none d-md-block">
-        Change, pause or cancel your subscription at any time. No strings attached.
+            Pick your products and select Subscribe and Save at checkout.<br><br class="d-none d-md-block">
+            Get a confirmation email each time your WUKIYO® subscription is scheduled to ship.<br><br
+                class="d-none d-md-block">
+            Change, pause or cancel your subscription at any time. No strings attached.
         </p>
     </div>
 
-	<?php include 'woocommerce/all-products.php'; ?>
-	<?php include 'archive-newsletter-subscribe-form.php'; ?>
+    <?php include 'woocommerce/all-products.php'; ?>
+    <?php include 'archive-newsletter-subscribe-form.php'; ?>
 
 </div>
-<?php 
+<?php
 get_footer();

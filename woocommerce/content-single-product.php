@@ -15,7 +15,7 @@
  * @version 3.6.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 global $product;
 
@@ -24,15 +24,15 @@ global $product;
  *
  * @hooked woocommerce_output_all_notices - 10
  */
-do_action( 'woocommerce_before_single_product' );
+do_action('woocommerce_before_single_product');
 
-if ( post_password_required() ) {
+if (post_password_required()) {
 	echo get_the_password_form(); // WPCS: XSS ok.
 	return;
 }
 ?>
 <a id="top"></a>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
 
 	<?php
 	/**
@@ -41,7 +41,7 @@ if ( post_password_required() ) {
 	 * @hooked woocommerce_show_product_sale_flash - 10
 	 * @hooked woocommerce_show_product_images - 20
 	 */
-	do_action( 'woocommerce_before_single_product_summary' );
+	do_action('woocommerce_before_single_product_summary');
 	?>
 
 	<div class="summary entry-summary">
@@ -58,10 +58,10 @@ if ( post_password_required() ) {
 		 * @hooked woocommerce_template_single_sharing - 50
 		 * @hooked WC_Structured_Data::generate_product_data() - 60
 		 */
-		do_action( 'woocommerce_single_product_summary' );
+		do_action('woocommerce_single_product_summary');
 		?>
-	
-	<div class="product-accordions-wrapper">
+
+		<div class="product-accordions-wrapper">
 			<div class="mt-5 single-product-accordion">
 				<h4 class="m-0 mb-1 toggleAccordion">FREE Shipping orders $199+</h4>
 				<div class="hidden">
@@ -83,18 +83,18 @@ if ( post_password_required() ) {
 				</div>
 			</div>
 		</div>
-	
+
 		<div class="product-animation-wrapper">
 			<video class="desktop-video" playsinline autoplay muted loop>
 				<source src="<?php echo get_template_directory_uri(); ?>/img/animation-desktop.mp4" type="video/mp4">
 				Your browser does not support the video tag.
 			</video>
-			<video class="mobile-video"playsinline autoplay muted loop>
+			<video class="mobile-video" playsinline autoplay muted loop>
 				<source src="<?php echo get_template_directory_uri(); ?>/img/animation-mobile.mp4" type="video/mp4">
 				Your browser does not support the video tag.
 			</video>
 		</div>
-	
+
 		<div class="product-specific-wrapper">
 			<div class="specific-latin">
 				<p class="bold">WUKIYO | apex™<br>Nootropics, reinvented.</p>
@@ -102,10 +102,10 @@ if ( post_password_required() ) {
 			</div>
 			<div class="specific-description">
 				<p>The highest point of achievement.<br>
-				The top or highest part of something, especially one forming a<br>point.</p>
+					The top or highest part of something, especially one forming a<br>point.</p>
 			</div>
 		</div>
-		
+
 		<div class="product-testimonials-wrapper">
 			<div class="row">
 				<div class="col-md">
@@ -115,14 +115,17 @@ if ( post_password_required() ) {
 						<div class="product-testimonial-text">
 							<h4>Prof. Ethan Flores</h4>
 							DPsych <br>
-							<p>"As a researcher, I have reviewed the studies conducted on ingredients used to formulate synthetics 
-								agents in our arsenal with a peer-reviewed evidence base for optimizing neurotransmitter production, 
-								neuroprotective effects and improving circulation to the brain, 
-								all of which may improve mental stamina and focus and alleviate disruptive mental symptoms. 
+							<p>"As a researcher, I have reviewed the studies conducted on ingredients used to formulate
+								synthetics
+								agents in our arsenal with a peer-reviewed evidence base for optimizing neurotransmitter
+								production,
+								neuroprotective effects and improving circulation to the brain,
+								all of which may improve mental stamina and focus and alleviate disruptive mental
+								symptoms.
 								Truly innovative and futuristic nootropics supplements stack!"
 							</p>
 						</div>
-					</div>	
+					</div>
 				</div>
 				<div class="col-md">
 					<div class="product-testimonial">
@@ -131,14 +134,17 @@ if ( post_password_required() ) {
 						<div class="product-testimonial-text">
 							<h4>Alvar Stainer</h4>
 							Architect <br>
-							<p>"I took WUKIYO | apex™ the first day and everyone kept coming up to me and asking me whats wrong. 
-								It was in a joking manner because nothing was actually wrong with me, I was just killing it. 
-								Setting a bunch of meetings, cold calls, etc. I was "in the zone". 
-								Feel like this is almost like natural Adderall. 
-								I'm really thankful that I found this product and I think I will be trying some of the other WUKIYO products."
+							<p>"I took WUKIYO | apex™ the first day and everyone kept coming up to me and asking me
+								whats wrong.
+								It was in a joking manner because nothing was actually wrong with me, I was just killing
+								it.
+								Setting a bunch of meetings, cold calls, etc. I was "in the zone".
+								Feel like this is almost like natural Adderall.
+								I'm really thankful that I found this product and I think I will be trying some of the
+								other WUKIYO products."
 							</p>
 						</div>
-					</div>	
+					</div>
 				</div>
 				<div class="col-md">
 					<div class="product-testimonial">
@@ -147,62 +153,65 @@ if ( post_password_required() ) {
 						<div class="product-testimonial-text">
 							<h4>Simone Laurence</h4>
 							Writer<br>
-							<p>"So when I started hearing about a way the 24/7 worker bees of Silicon Valley were 
-								“biohacking” their brain to stay focused using something called nootropics, 
-								I worked my health writer magic and had a few brands send me some to try. 
-								Trying them all I can conclude that WUKIYO | apex™ is unquestionably the best nootropics supplement in the market! 
+							<p>"So when I started hearing about a way the 24/7 worker bees of Silicon Valley were
+								“biohacking” their brain to stay focused using something called nootropics,
+								I worked my health writer magic and had a few brands send me some to try.
+								Trying them all I can conclude that WUKIYO | apex™ is unquestionably the best nootropics
+								supplement in the market!
 								Glad to be the part of the team."
 							</p>
 						</div>
-					</div>	
+					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="product-certificates-wrapper">
 			<h3>Certifiably Safe Products</h3>
 			<p>We have gone through extensive processes to ensure our products are not only effective,<br>
-			but safe and compliant as well.</p>
-			
+				but safe and compliant as well.</p>
+
 			<div class="product-cert">
 				<div class="cert-img-1">
 					<img src="<?php echo get_template_directory_uri(); ?>/img/nsf@2x.webp" alt="NSF Logo">
 				</div>
 				<p class="cert-text mb-0">NSF International verifies that products meet public health and safety<br>
-				standards. WUKIYO | apex™ passed with flying colors.</p>
+					standards. WUKIYO | apex™ passed with flying colors.</p>
 			</div>
 			<div class="product-cert">
 				<div class="cert-img-2">
 					<img src="<?php echo get_template_directory_uri(); ?>/img/fda-compliant@2x.webp" alt="FDA Logo">
 				</div>
 				<p class="cert-text mb-0">The Food and Drug Administration (FDA) regulates the safety of food,<br>
-				drugs, and other consumer products. WUKIYO | apex™ fits the bill.</p>
+					drugs, and other consumer products. WUKIYO | apex™ fits the bill.</p>
 			</div>
 			<div class="product-cert">
 				<div class="cert-img-3">
 					<img src="<?php echo get_template_directory_uri(); ?>/img/WADA@2x.webp" alt="WADA Logo">
 				</div>
 				<p class="cert-text mb-0">The World Anti-Doping Agency (WADA) monitors the fight against<br>
-				drugs in sports. WUKIYO | apex™ can keep you in the zone and in the game.</p>
+					drugs in sports. WUKIYO | apex™ can keep you in the zone and in the game.</p>
 			</div>
 		</div>
-		
+
 		<div class="product-benefits-wrapper">
 			<h3>Benefits</h3>
 			<p>• Provides support for every aspect of cognitive performance: focus, working memory,<br>
-			procesing speeds, reaction times, and overall brain health.</p>
+				procesing speeds, reaction times, and overall brain health.</p>
 			<p>• Improved focus 10+ hours.</p>
-			<p>• Performance-driven thinking like focus, short-term memory, stress resistance and others that help to give a more immediate edge to productivity, intensity, competition, deadline, exams, etc.</p>
+			<p>• Performance-driven thinking like focus, short-term memory, stress resistance and others that help to
+				give a more immediate edge to productivity, intensity, competition, deadline, exams, etc.</p>
 			<p>• Heightened 'flow state', the feeling of being in the zone.</p>
 			<button class="buy-now-button blue-button">BUY NOW</button>
 		</div>
-		
+
 		<div class="magazine-logos-wrapper">
 			<h3>As Seen In</h3>
 			<div class="container">
 				<div class="row">
 					<div class="col-6 col-md-4 d-flex justify-content-center align-items-center">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/jneurosci-logo.webp" alt="JNeurosci Logo">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/jneurosci-logo.webp"
+							alt="JNeurosci Logo">
 					</div>
 					<div class="col-6 col-md-4 d-flex justify-content-center align-items-center">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/arise-logo.webp" alt="Arise Logo">
@@ -212,10 +221,12 @@ if ( post_password_required() ) {
 					</div>
 					<div class="w-100 my-3 desktop"></div>
 					<div class="col-6 col-md-4 d-flex justify-content-center align-items-center">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/entrepreneur-logo.webp" alt="Entrepreneur Logo">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/entrepreneur-logo.webp"
+							alt="Entrepreneur Logo">
 					</div>
 					<div class="col-6 col-md-4 d-flex justify-content-center align-items-center">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/attitude-logo.webp" alt="Attitude Logo">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/attitude-logo.webp"
+							alt="Attitude Logo">
 					</div>
 					<div class="col-6 col-md-4 d-flex justify-content-center align-items-center">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/sfm-logo.webp" alt="SFM Logo">
@@ -228,13 +239,15 @@ if ( post_password_required() ) {
 			<h3>Functional Ingredients. Functional Mind.</h3>
 			<p>Patented, research-backed formulas made with the cleanest ingredients from science and nature.</p>
 			<div class="product-ingredients-header d-flex align-items-center">
-				<img alt="Product logo" class="mr-3 logo300" src="<?php echo get_template_directory_uri(); ?>/img/wukiyo-apex@2x.webp">
+				<img alt="Product logo" class="mr-3 logo300"
+					src="<?php echo get_template_directory_uri(); ?>/img/wukiyo-apex@2x.webp">
 				<h3>Ingredients</h3>
 			</div>
 			<p class="m-0 bold">W-YO® | W-sensei™</p>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">L-Tyrosine<span class="ingredient-quantity">300 mg</span></p>
+					<p class="m-0 d-flex align-items-center">L-Tyrosine<span class="ingredient-quantity">300 mg</span>
+					</p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -243,7 +256,8 @@ if ( post_password_required() ) {
 			<div class="black-border-bottom"></div>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">Curcumin<span class="ingredient-quantity">250 mg</span> + Piperine <span class="ingredient-quantity">3 mg</span></p>
+					<p class="m-0 d-flex align-items-center">Curcumin<span class="ingredient-quantity">250 mg</span> +
+						Piperine <span class="ingredient-quantity">3 mg</span></p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -252,7 +266,8 @@ if ( post_password_required() ) {
 			<div class="black-border-bottom"></div>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">Phosphatidylserine<span class="ingredient-quantity">250 mg</span></p>
+					<p class="m-0 d-flex align-items-center">Phosphatidylserine<span class="ingredient-quantity">250
+							mg</span></p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -270,7 +285,8 @@ if ( post_password_required() ) {
 			<div class="black-border-bottom"></div>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">Phenibut HCL<span class="ingredient-quantity">60 mg</span></p>
+					<p class="m-0 d-flex align-items-center">Phenibut HCL<span class="ingredient-quantity">60 mg</span>
+					</p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -289,7 +305,8 @@ if ( post_password_required() ) {
 			<p class="m-0 bold">W-YO® | W-komorai™</p>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">Citicoline<span class="ingredient-quantity">250 mg</span></p>
+					<p class="m-0 d-flex align-items-center">Citicoline<span class="ingredient-quantity">250 mg</span>
+					</p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -298,7 +315,8 @@ if ( post_password_required() ) {
 			<div class="black-border-bottom"></div>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">Alpha-GPC<span class="ingredient-quantity">200 mg</span></p>
+					<p class="m-0 d-flex align-items-center">Alpha-GPC<span class="ingredient-quantity">200 mg</span>
+					</p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -325,7 +343,8 @@ if ( post_password_required() ) {
 			<div class="black-border-bottom"></div>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">Magnesium<span class="ingredient-quantity">200 mg</span></p>
+					<p class="m-0 d-flex align-items-center">Magnesium<span class="ingredient-quantity">200 mg</span>
+					</p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -334,7 +353,8 @@ if ( post_password_required() ) {
 			<div class="black-border-bottom"></div>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">Vitamin K<span class="ingredient-quantity">100 mcg</span></p>
+					<p class="m-0 d-flex align-items-center">Vitamin K<span class="ingredient-quantity">100 mcg</span>
+					</p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -343,7 +363,8 @@ if ( post_password_required() ) {
 			<div class="black-border-bottom"></div>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">Vitamin D<span class="ingredient-quantity">62.5 mcg</span></p>
+					<p class="m-0 d-flex align-items-center">Vitamin D<span class="ingredient-quantity">62.5 mcg</span>
+					</p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -351,14 +372,14 @@ if ( post_password_required() ) {
 			</div>
 			<div class="black-border-bottom mb-0"></div>
 		</div>
-		
+
 		<div class="product-patent-wrapper">
-			<h3>The Patent.</h3>	
+			<h3>The Patent.</h3>
 			<div class="product-patent">
 				<div class="patent-img">
 					<img src="<?php echo get_template_directory_uri(); ?>/img/uspto-logo@2x.webp" alt="USPTO Logo">
 				</div>
-				<p class="patent-text mb-0">W-YO® has been awarded a Notice of Allowance from the U.S. 
+				<p class="patent-text mb-0">W-YO® has been awarded a Notice of Allowance from the U.S.
 					Patent and Trademark Office for our two proprietary nootropic molecules CRL-21X™ and FL66™.</p>
 			</div>
 		</div>
@@ -385,7 +406,8 @@ if ( post_password_required() ) {
 			<div class="black-border-bottom"></div>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">What are primary, patented ingredients of the WUKIYO® | apex?</p>
+					<p class="m-0 d-flex align-items-center">What are primary, patented ingredients of the WUKIYO® |
+						apex?</p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -421,7 +443,8 @@ if ( post_password_required() ) {
 			<div class="black-border-bottom"></div>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">How should I store WUKIYO® | apex and how long does it last?</p>
+					<p class="m-0 d-flex align-items-center">How should I store WUKIYO® | apex and how long does it
+						last?</p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -448,7 +471,8 @@ if ( post_password_required() ) {
 			<div class="black-border-bottom"></div>
 			<div class="single-product-accordion">
 				<div class="m-0 toggleAccordion">
-					<p class="m-0 d-flex align-items-center">What is the main difference between WUKIYO® | apex and WUKIYO® | esse?</p>
+					<p class="m-0 d-flex align-items-center">What is the main difference between WUKIYO® | apex and
+						WUKIYO® | esse?</p>
 				</div>
 				<div class="hidden">
 					<p class="product-accordion-p">You can buy WUKIYO on this website or on Amazon.com</p>
@@ -462,20 +486,24 @@ if ( post_password_required() ) {
 			</a>
 		</div>
 
-		<a class="black-button faq-button desktop" href="<?php the_field('faq_link', 'option') ?>">FREQUENTLY ASKED QUESTIONS</a>
+		<a class="black-button faq-button desktop" href="<?php the_field('faq_link', 'option') ?>">FREQUENTLY ASKED
+			QUESTIONS</a>
 
 		<div class="product-reviews-wrapper">
 			<h3>What are people saying about</h3>
-			<img alt="Product logo" class="logo300" src="<?php echo get_template_directory_uri(); ?>/img/wukiyo-apex@2x.webp">
+			<img alt="Product logo" class="logo300"
+				src="<?php echo get_template_directory_uri(); ?>/img/wukiyo-apex@2x.webp">
 			<div class="product-reviews-stats">
 				<h3>Customer Reviews</h3>
 				<div class="rating-wrapper desktop">
-					<img alt="Customer Rating" src="<?php echo get_template_directory_uri(); ?>/img/rating-stars@2x.webp">
+					<img alt="Customer Rating"
+						src="<?php echo get_template_directory_uri(); ?>/img/rating-stars@2x.webp">
 					<p class="rating-stats">4.89 <span>based on 921 reviews</span></p>
 				</div>
 				<div class="d-lg-none">
 					<div class="d-flex">
-						<img alt="Customer Rating" src="<?php echo get_template_directory_uri(); ?>/img/rating-stars@2x.webp">
+						<img alt="Customer Rating"
+							src="<?php echo get_template_directory_uri(); ?>/img/rating-stars@2x.webp">
 						<p class="rating-stats">4.89</p>
 					</div>
 					<p class="stats-text">based on 921 reviews</p>
@@ -494,13 +522,13 @@ if ( post_password_required() ) {
 					 * @hooked woocommerce_upsell_display - 15 - removed (woocommerce.php)
 					 * @hooked woocommerce_output_related_products - 20 - removed (woocommerce.php)
 					 */
-					do_action( 'woocommerce_after_single_product_summary' );
+					do_action('woocommerce_after_single_product_summary');
 					// echo do_shortcode('[woo_reviews id="350"]');
 					?>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="subscribe">
 			<h3>Revolution is coming.
 				<br>
@@ -517,8 +545,10 @@ if ( post_password_required() ) {
 				<div class="review-input-fields">
 					<input type="hidden" name="u" value="4830cbe4ec1ae4c814b17b17c">
 					<input type="hidden" name="id" value="d7a9b9be79">
-					<input class="black-input"  type="text" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Name and Surname">
-					<input class="black-input"  type="email" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Email">
+					<input class="black-input" type="text" autocapitalize="off" autocorrect="off" name="MERGE0"
+						id="MERGE0" size="25" value="" placeholder="Name and Surname">
+					<input class="black-input" type="email" autocapitalize="off" autocorrect="off" name="MERGE0"
+						id="MERGE0" size="25" value="" placeholder="Email">
 				</div>
 				<button class="align-self-end">Join now</button>
 			</form>
@@ -527,4 +557,4 @@ if ( post_password_required() ) {
 	</div>
 </div>
 
-<?php do_action( 'woocommerce_after_single_product' ); ?>
+<?php do_action('woocommerce_after_single_product'); ?>

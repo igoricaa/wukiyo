@@ -15,71 +15,71 @@
  * @version     1.6.4
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-get_header( 'shop' ); ?>
+get_header('shop'); ?>
+
+<?php
+/**
+ * woocommerce_before_main_content hook.
+ *
+ * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+ * @hooked woocommerce_breadcrumb - 20
+ */
+do_action('woocommerce_before_main_content');
+?>
+
+<a href="#top" id="back-to-top-circle"></a>
+
+<?php while (have_posts()): ?>
+	<?php the_post(); ?>
 
 	<?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 */
-		do_action( 'woocommerce_before_main_content' );
+	global $product;
+	$content_template_name;
+	$esseId = 26;
+	$apexId = 350;
+	$blissId = 356;
+	$pureId = 359;
+	$vertId = 361;
+	$productId = $product->get_id();
+
+	switch ($productId) {
+		case $esseId:
+			$content_template_name = 'esse';
+			break;
+		case $apexId:
+			$content_template_name = 'apex';
+			break;
+		case $blissId:
+			$content_template_name = 'bliss';
+			break;
+		case $pureId:
+			$content_template_name = 'pure';
+			break;
+		case $vertId:
+			$content_template_name = 'vert';
+			break;
+	}
 	?>
-	
-	<a href="#top" id="back-to-top-circle"></a>
 
-	<?php while ( have_posts() ) : ?>
-		<?php the_post(); ?>
+	<?php wc_get_template_part('content', $content_template_name); ?>
 
-		<?php 
-			global $product;
-			$content_template_name;
-			$esseId = 26;
-			$apexId = 350;
-			$blissId = 356;
-			$pureId = 359;
-			$vertId = 361;
-			$productId = $product->get_id();
+<?php endwhile; // end of the loop. ?>
 
-			switch ($productId) {
-				case $esseId:
-					$content_template_name = 'esse';
-					break;
-				case $apexId:
-					$content_template_name = 'apex';
-					break;
-				case $blissId:
-					$content_template_name = 'bliss';
-					break;
-				case $pureId:
-					$content_template_name = 'pure';
-					break;
-				case $vertId:
-					$content_template_name = 'vert';
-					break;
-			}
-		?>
+<?php
+/**
+ * woocommerce_after_main_content hook.
+ *
+ * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+ */
+do_action('woocommerce_after_main_content');
+?>
 
-		<?php wc_get_template_part( 'content', $content_template_name ); ?>
-
-	<?php endwhile; // end of the loop. ?>
-
-	<?php
-		/**
-		 * woocommerce_after_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-		 */
-		do_action( 'woocommerce_after_main_content' );
-	?>
-	
 <script>
-	$(document).ready(function() {
+	$(document).ready(function () {
 		let esseId = 26,
 			apexId = 350,
 			blissId = 356,
@@ -88,19 +88,19 @@ get_header( 'shop' ); ?>
 
 		let productId = <?php echo $productId ?>;
 
-        $('.single-add-to-cart-button').on('click', function() {
-            const cartAmount = $('.cart-amount');
-            cartAmount.toggleClass('opacity').addClass('blue');
+		$('.single-add-to-cart-button').on('click', function () {
+			const cartAmount = $('.cart-amount');
+			cartAmount.toggleClass('opacity').addClass('blue');
 			$('.cartText').text('Checkout');
-            
-            if (window.matchMedia('(min-width: 370px)').matches) {
-                cartAmount.addClass('open');
-            }
-            
-            setTimeout(() => {
-                $('.cart-amount').removeClass('blue'); 
-            }, 1000);
-        });
+
+			if (window.matchMedia('(min-width: 370px)').matches) {
+				cartAmount.addClass('open');
+			}
+
+			setTimeout(() => {
+				$('.cart-amount').removeClass('blue');
+			}, 1000);
+		});
 
 		let authorInputField = $('input[id="author"]'),
 			emailInputField = $('input[id="email"]');
@@ -125,23 +125,23 @@ get_header( 'shop' ); ?>
 			subscriptionProductPrice = getSubscriptionProductPrice(),
 			standardSaleProductPriceString = salePriceElement.html(),
 			standardSalePriceNumber = standardSaleProductPriceString.substring(
-				standardSaleProductPriceString.indexOf("$") + 1, 
+				standardSaleProductPriceString.indexOf("$") + 1,
 				standardSaleProductPriceString.lastIndexOf(" ")
 			);
 
 		$('#one-time-radio .wcsatt-options-prompt-action').text('One-Time Purchase | $' + standardProductPrice + ' USD')
 		$('#subscription-radio .wcsatt-options-prompt-action').text('Subscribe and Save | $' + subscriptionProductPrice + ' USD')
-		
-		$("#one-time-radio input[name='subscribe-to-action-input']").change(function() {
+
+		$("#one-time-radio input[name='subscribe-to-action-input']").change(function () {
 			setStandardProductPrice();
-        });
-		$("#subscription-radio input[name='subscribe-to-action-input']").change(function() {
+		});
+		$("#subscription-radio input[name='subscribe-to-action-input']").change(function () {
 			setSubscriptionProductPrice();
-        });
+		});
 
 		function setStandardProductPrice() {
 			let newStandardPriceString = standardPriceElement.html().replace(subscriptionProductPrice, standardProductPrice);
-			standardPriceElement.html(newStandardPriceString);	
+			standardPriceElement.html(newStandardPriceString);
 
 			let newSalePriceString = salePriceElement.html().replace(standardProductPrice, standardSalePriceNumber);
 			salePriceElement.html(newSalePriceString);
@@ -149,7 +149,7 @@ get_header( 'shop' ); ?>
 		function setSubscriptionProductPrice() {
 			let newPriceString = standardPriceElement.html().replace(standardProductPrice, subscriptionProductPrice);
 			standardPriceElement.html(newPriceString);
-			
+
 			let newSalePriceString = salePriceElement.html().replace(standardSalePriceNumber, standardProductPrice);
 			salePriceElement.html(newSalePriceString);
 		}
@@ -188,15 +188,15 @@ get_header( 'shop' ); ?>
 		}
 
 		let backToTopCircleBtn = $('#back-to-top-circle');
-		$(window).scroll(function() {
+		$(window).scroll(function () {
 			if ($(window).scrollTop() > 300) {
 				backToTopCircleBtn.addClass('show');
 			} else {
 				backToTopCircleBtn.removeClass('show');
 			}
 		});
-		
-		$('#sub-and-save').click(function() {
+
+		$('#sub-and-save').click(function () {
 			const subscriptionRadio = document.getElementById('subscription-radio'),
 				elementRect = subscriptionRadio.getBoundingClientRect(),
 				absoluteElementTop = elementRect.top + window.pageYOffset,
@@ -208,19 +208,19 @@ get_header( 'shop' ); ?>
 				radioInput.checked = true;
 				radioInput.dispatchEvent(new Event('change'));
 			}
-		});	  
+		});
 
 		const oneTimeString = 'one-time',
 			subscriptionString = 'subscription';
 
 		let isSubscription = false;
-    	$('.wcsatt-options-prompt-action-input').change(function() {
-        	let value = $(this).val();
-        	isSubscription = value === 'yes' ? true : false;
+		$('.wcsatt-options-prompt-action-input').change(function () {
+			let value = $(this).val();
+			isSubscription = value === 'yes' ? true : false;
 
 			let productType = isSubscription ? subscriptionString : oneTimeString;
 			setProductInfo(productType);
-    	});
+		});
 
 		function setProductInfo(productType) {
 			let productInfoElement = productType === oneTimeString ? $('#one-time-product-info') : $('#subscription-product-info'),
@@ -228,7 +228,7 @@ get_header( 'shop' ); ?>
 
 			addToCartButton.attr('data-product-current-quantity', productInfoElement.attr('data-current-quantity')).removeClass('disabled');
 
-			if (productInfoElement.attr('data-current-quantity') == 0 ) {
+			if (productInfoElement.attr('data-current-quantity') == 0) {
 				addToCartButton.text('ADD TO CART');
 			} else {
 				addToCartButton.text('CHECKOUT');
@@ -255,6 +255,6 @@ get_header( 'shop' ); ?>
 </script>
 
 <?php
-get_footer( 'shop' );
+get_footer('shop');
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
