@@ -15,7 +15,7 @@
  * @version    1.6.4
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
@@ -54,14 +54,12 @@ switch ($id) {
 
 ?>
 <div class="d-flex align-items-center">
-	<img alt="Product logo" class="title-logo" src="<?php echo get_template_directory_uri(); echo $logo ?>">
+	<img alt="Product logo" class="title-logo" src="<?php echo get_template_directory_uri();
+	echo $logo ?>">
 
 	<div class="woocommerce-product-rating d-flex align-items-center">
 		<img alt="Customer Rating" src="<?php echo get_template_directory_uri(); ?>/img/rating-stars.webp">
-		<span class="bold"><?php echo $rating?></span>
+		<span class="bold"><?php echo $rating ?></span>
 	</div>
 
 </div>
-
-
-

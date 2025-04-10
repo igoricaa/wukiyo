@@ -17,13 +17,17 @@
  * @version 3.0.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 $notes = $order->get_customer_order_notes();
 ?>
 
-<p class="mb-0"><span>Order: </span><?php echo esc_html( _x( '#', 'hash before order number', 'woocommerce' ) . $order -> get_order_number() ); ?></p>
-<p class="mb-0"><span>Date: </span><time datetime="<?php echo esc_attr( $order -> get_date_created()->date( 'c' ) ); ?>"><?php echo esc_html( wc_format_datetime( $order -> get_date_created() ) ); ?></time></p>
-<p><span>Status: </span><?php echo esc_html( wc_get_order_status_name( $order -> get_status() ) ); ?></p>
+<p class="mb-0"><span>Order:
+    </span><?php echo esc_html(_x('#', 'hash before order number', 'woocommerce') . $order->get_order_number()); ?>
+</p>
+<p class="mb-0"><span>Date: </span><time
+        datetime="<?php echo esc_attr($order->get_date_created()->date('c')); ?>"><?php echo esc_html(wc_format_datetime($order->get_date_created())); ?></time>
+</p>
+<p><span>Status: </span><?php echo esc_html(wc_get_order_status_name($order->get_status())); ?></p>
 
-<?php do_action( 'woocommerce_view_order', $order_id ); ?>
+<?php do_action('woocommerce_view_order', $order_id); ?>

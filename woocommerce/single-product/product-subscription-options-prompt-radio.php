@@ -12,7 +12,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 } ?>
 
@@ -20,7 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 <ul class="wcsatt-options-prompt-radios">
 	<li class="wcsatt-options-prompt-radio">
 		<label id="one-time-radio" class="wcsatt-options-prompt-label wcsatt-options-prompt-label-one-time">
-			<input class="wcsatt-options-prompt-action-input" type="radio" name="subscribe-to-action-input" value="no" />
+			<input class="wcsatt-options-prompt-action-input" type="radio" name="subscribe-to-action-input"
+				value="no" />
 			<span class="wcsatt-options-prompt-action">One-Time Purchase | $ USD</span>
 			</span>
 		</label>
@@ -28,7 +29,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</li>
 	<li class="wcsatt-options-prompt-radio">
 		<label id="subscription-radio" class="wcsatt-options-prompt-label wcsatt-options-prompt-label-subscription">
-			<input class="wcsatt-options-prompt-action-input" type="radio" name="subscribe-to-action-input" value="yes" />
+			<input class="wcsatt-options-prompt-action-input" type="radio" name="subscribe-to-action-input"
+				value="yes" />
 			<span class="wcsatt-options-prompt-action">Subscribe and Save | $ USD </span>
 		</label>
 		<span class="sub-text">Delivery every 30 days. Pause or modify anytime.</span>

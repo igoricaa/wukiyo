@@ -1,8 +1,8 @@
 <?php
 /**
- * Customer completed order email
+ * Customer completed order email (plain text)
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/emails/customer-completed-order.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/customer-completed-order.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -10,32 +10,37 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates\Emails
- * @version 3.7.0
+ * @see https://woocommerce.com/document/template-structure/
+ * @package WooCommerce\Templates\Emails\Plain
+ * @version 9.8.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
 
-/*
- * @hooked WC_Emails::email_header() Output the email header
- */
-do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
+defined('ABSPATH') || exit;
+
+$email_improvements_enabled = FeaturesUtil::feature_is_enabled('email_improvements');
+
+echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+echo esc_html(wp_strip_all_tags($email_heading));
+echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
+?>
 
 <div class="order-confirmation-intro">
 	<h1>Your order has been shipped!</h1>
-	<p><?php printf( esc_html__( 'Hi %s, Great news, your order is on its way!', 'woocommerce' ), esc_html( $order->get_billing_first_name() )); ?></p>
-	<p><?php echo esc_html__( 'Use this number to track your order:', 'woocommerce' ); ?></p>
-	<?php 
-	$tracking_info = $order -> get_meta('_wc_shipment_tracking_items');
+	<p><?php printf(esc_html__('Hi %s, Great news, your order is on its way!', 'woocommerce'), esc_html($order->get_billing_first_name())); ?>
+	</p>
+	<p><?php echo esc_html__('Use this number to track your order:', 'woocommerce'); ?></p>
+	<?php
+	$tracking_info = $order->get_meta('_wc_shipment_tracking_items');
 	$tracking_number = $tracking_info[0]['tracking_number'];
 	?>
 
 	<p class="tracking-number"><?php echo $tracking_number; ?></p>
-	<p><?php echo esc_html__( 'Track your order:', 'woocommerce' ); ?></p>
-	<p><?php echo esc_html__( 'http://parcelsapp.com/en', 'woocommerce' ); ?><div class="randomness"><?php echo time(); ?></div></p>
+	<p><?php echo esc_html__('Track your order:', 'woocommerce'); ?></p>
+	<p><?php echo esc_html__('http://parcelsapp.com/en', 'woocommerce'); ?>
+	<div class="randomness"><?php echo time(); ?></div>
+	</p>
 </div>
 
 <?php
@@ -44,10 +49,10 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
  * @hooked WC_Emails::customer_details() Shows customer details
  * @hooked WC_Emails::email_address() Shows email address - email-adresses.php
  */
-do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text, $email ); 
+do_action('woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text, $email);
 
-$order_shipping_cost = $order -> get_shipping_total();
-if (!$order_shipping_cost || $order_shipping_cost == 0 || $order_shipping_cost == '') :
+$order_shipping_cost = $order->get_shipping_total();
+if (!$order_shipping_cost || $order_shipping_cost == 0 || $order_shipping_cost == ''):
 	$order_shipping_cost = 0;
 endif;
 ?>
@@ -57,26 +62,26 @@ endif;
 		<td class="email-column" valign="top">
 			<h2>Contact details</h2>
 
-			<?php if ( $order -> get_billing_email() ) : ?>
-				<p><?php echo esc_html( $order->get_billing_email() ); ?></p>
+			<?php if ($order->get_billing_email()): ?>
+				<p><?php echo esc_html($order->get_billing_email()); ?></p>
 			<?php endif; ?>
-			<?php if ( $order -> get_shipping_phone() ) : ?>
-				<p><?php echo esc_html( $order -> get_shipping_phone() ); ?></p>
+			<?php if ($order->get_shipping_phone()): ?>
+				<p><?php echo esc_html($order->get_shipping_phone()); ?></p>
 			<?php endif; ?>
 		</td>
 		<td class="email-column" valign="top">
 			<h2>Delivery method</h2>
-		
-			<?php if ( $order -> get_shipping_method() ) : ?>
-				<p><?php echo $order -> get_shipping_method(); ?></p>
+
+			<?php if ($order->get_shipping_method()): ?>
+				<p><?php echo $order->get_shipping_method(); ?></p>
 				<p>Cost: $<?php echo $order_shipping_cost; ?></p>
 				<p>Expected delivery time:</p>
-			
-				<?php if ( $order_shipping_cost == 18 ) : ?>
+
+				<?php if ($order_shipping_cost == 18): ?>
 					<p>2 - 4 business days.</p>
-				<?php else : ?>
+				<?php else: ?>
 					<p>6 - 9 business days.</p>
-				<?php endif;?>
+				<?php endif; ?>
 			<?php endif; ?>
 		</td>
 		<td class="empty-column"></td>
@@ -85,37 +90,38 @@ endif;
 
 <div class="email-order-summary">
 	<h2>Order summary</h2>
-	<div class="mini-cart-wrapper"> 
+	<div class="mini-cart-wrapper">
 		<?php
-		$order_total = $order -> get_formatted_order_total();
-		$order_subtotal = $order -> get_subtotal();
-		$order_quantity = $order -> get_item_count();
-		$order_discount_total = $order -> get_discount_total();
+		$order_total = $order->get_formatted_order_total();
+		$order_subtotal = $order->get_subtotal();
+		$order_quantity = $order->get_item_count();
+		$order_discount_total = $order->get_discount_total();
 		if (!$order_discount_total || $order_discount_total == 0 || $order_discount_total == '') {
 			$order_discount_total = '-';
 		} else {
-			$order_discount_total = '$'.$order_discount_total; 
+			$order_discount_total = '$' . $order_discount_total;
 		}
 
-		foreach ( $order -> get_items() as $item_id => $item ) {
-			$product = $item -> get_product();
-			$product_quantity = $item -> get_quantity();
+		foreach ($order->get_items() as $item_id => $item) {
+			$product = $item->get_product();
+			$product_quantity = $item->get_quantity();
 
-			if ( $product && $product -> exists() && $product_quantity > 0 ) {
-				$product_id = $product -> get_id();
-				$product_price = '$'.$product -> get_price();
+			if ($product && $product->exists() && $product_quantity > 0) {
+				$product_id = $product->get_id();
+				$product_price = '$' . $product->get_price();
 				$product_type = 'one-time';
 				if (class_exists('WC_Subscriptions_Product') && WC_Subscriptions_Product::is_subscription($product)) {
 					$product_type = 'subscription';
-					$product_price = $product_price.' / month';
-				};
+					$product_price = $product_price . ' / month';
+				}
+				;
 
 				$esseId = 26;
 				$apexId = 350;
 				$blissId = 356;
 				$pureId = 359;
 				$vertId = 361;
-				?>					
+				?>
 
 				<?php
 				$product_image_src;
@@ -147,10 +153,13 @@ endif;
 					<tr style="padding: 0px;">
 						<td class="cart-product-img-logo" valign="middle">
 							<div class="cart-product-image">
-								<img src="<?php echo get_template_directory_uri(); echo $product_image_src;?>" alt="Product package">
+								<img src="<?php echo get_template_directory_uri();
+								echo $product_image_src; ?>"
+									alt="Product package">
 							</div>
 							<div class="cart-product-logo">
-								<img src="<?php echo get_template_directory_uri(); echo $product_logo_src?>" alt="Product logo">
+								<img src="<?php echo get_template_directory_uri();
+								echo $product_logo_src ?>" alt="Product logo">
 							</div>
 						</td>
 						<td class="cart-product-price" valign="middle">
@@ -161,10 +170,10 @@ endif;
 					</tr>
 				</table>
 				<div class="randomness"><?php echo time(); ?></div>
-			<?php
+				<?php
 			}
-		}	
-	?>
+		}
+		?>
 	</div>
 	<!-- mini cart end -->
 	<div class="cart-numbers-wrapper">
@@ -199,4 +208,4 @@ endif;
 /*
  * @hooked WC_Emails::email_footer() Output the email footer
  */
-do_action( 'woocommerce_email_footer', $email );
+do_action('woocommerce_email_footer', $email);

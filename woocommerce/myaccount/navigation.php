@@ -10,29 +10,29 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 2.6.0
+ * @version 9.3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
-do_action( 'woocommerce_before_account_navigation' );
+do_action('woocommerce_before_account_navigation');
 ?>
 
 <div class="my-account-dashboard-wrapper">
-	<nav class="woocommerce-MyAccount-navigation">
+	<nav class="woocommerce-MyAccount-navigation" aria-label="<?php esc_html_e('Account pages', 'woocommerce'); ?>">
 		<ul>
-			<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
-				<a href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>">
-					<li class="<?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">
-						<p><?php echo esc_html( $label ); ?></p>
-					</li>
-				</a>
+			<?php foreach (wc_get_account_menu_items() as $endpoint => $label): ?>
+				<li class="<?php echo wc_get_account_menu_item_classes($endpoint); ?>">
+					<a href="<?php echo esc_url(wc_get_account_endpoint_url($endpoint)); ?>" <?php echo wc_is_current_account_menu_item($endpoint) ? 'aria-current="page"' : ''; ?>>
+						<p><?php echo esc_html($label); ?></p>
+					</a>
+				</li>
 			<?php endforeach; ?>
 		</ul>
 	</nav>
 
-	<?php do_action( 'woocommerce_after_account_navigation' ); ?>
+	<?php do_action('woocommerce_after_account_navigation'); ?>

@@ -10,42 +10,48 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
+ * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails
- * @version 5.6.0
+ * @version 9.8.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
+
+if (!defined('ABSPATH')) {
 	exit;
 }
 
-$text_align = is_rtl() ? 'right' : 'left';
-$address    = $order->get_formatted_billing_address();
-$shipping   = $order->get_formatted_shipping_address();
+$address = $order->get_formatted_billing_address();
+$shipping = $order->get_formatted_shipping_address();
+
+$email_improvements_enabled = FeaturesUtil::feature_is_enabled('email_improvements');
 ?>
-<table id="addresses" cellspacing="0" cellpadding="0">
+<table id="addresses" cellspacing="0" cellpadding="0"
+	style="width: 100%; vertical-align: top; margin-bottom: <?php echo $email_improvements_enabled ? '0' : '40px'; ?>; padding:0;"
+	border="0">
 	<tr>
 		<td class="email-column" valign="top">
-			<h2><?php esc_html_e( 'Shipping address', 'woocommerce' ); ?></h2>
+			<h2><?php esc_html_e('Shipping address', 'woocommerce'); ?></h2>
 			<address class="address">
-				<?php echo wp_kses_post( $shipping ); ?>
-				<?php if ( $order->get_shipping_phone() ) : ?>
-					<br /><?php echo wc_make_phone_clickable( $order->get_shipping_phone() ); ?>
+				<?php echo wp_kses_post($shipping); ?>
+				<?php if ($order->get_shipping_phone()): ?>
+					<br /><?php echo wc_make_phone_clickable($order->get_shipping_phone()); ?>
 				<?php endif; ?>
 			</address>
 		</td>
-		<?php if ( ! wc_ship_to_billing_address_only() && $order->needs_shipping_address() && $shipping ) : ?>
-		<td class="email-column" valign="top">
-			<h2><?php esc_html_e( 'Billing address', 'woocommerce' ); ?></h2>
-			<address class="address">
-				<?php echo wp_kses_post( $address ? $address : esc_html__( 'N/A', 'woocommerce' ) ); ?>
-				<?php if ( $order->get_billing_phone() ) : ?>
-					<br/><?php echo wc_make_phone_clickable( $order->get_billing_phone() ); ?>
-				<?php endif; ?>
-			</address>
-		</td>	
-		<td class="empty-column"></td>
+		<?php if (!wc_ship_to_billing_address_only() && $order->needs_shipping_address() && $shipping): ?>
+			<td class="email-column" valign="top">
+				<h2><?php esc_html_e('Billing address', 'woocommerce'); ?></h2>
+				<address class="address">
+					<?php echo wp_kses_post($address ? $address : esc_html__('N/A', 'woocommerce')); ?>
+					<?php if ($order->get_billing_phone()): ?>
+						<br /><?php echo wc_make_phone_clickable($order->get_billing_phone()); ?>
+					<?php endif; ?>
+				</address>
+			</td>
+			<td class="empty-column"></td>
 		<?php endif; ?>
 	</tr>
-	
+
 </table>
+<?php echo $email_improvements_enabled ? '<br>' : ''; ?>

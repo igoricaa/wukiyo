@@ -10,44 +10,52 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails
- * @version 4.0.0
+ * @version 9.8.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
+
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
+
+$email_improvements_enabled = FeaturesUtil::feature_is_enabled('email_improvements');
 
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo( 'charset' ); ?>" />
-		<title><?php echo get_bloginfo( 'name', 'display' ); ?></title>
-	</head>
-	<body <?php echo is_rtl() ? 'rightmargin' : 'leftmargin'; ?>="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
-		<div id="wrapper" dir="<?php echo is_rtl() ? 'rtl' : 'ltr'; ?>">
-			<table id="width-wrapper" border="0" align="center" cellpadding="0" cellspacing="0" height="100%">
-				<tr>
-					<td align="center" valign="top">
-						
-						<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_container">
-							<tr>
-								<td valign="top">
-									<div class="header-wrapper">
-										<img src="<?php echo get_template_directory_uri();?>/img/emails/wukiyo-logo.png" alt="Wukiyo logo">
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td align="center" valign="top">
-									<!-- Body -->
-									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_body">
-										<tr>
-											<td valign="top" id="body_content">
-												<!-- Content -->
-												<table border="0" cellpadding="20" cellspacing="0" width="100%">
-													<tr>
-														<td valign="top">
-															<div id="body_content_inner">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo('charset'); ?>" />
+	<title><?php echo get_bloginfo('name', 'display'); ?></title>
+</head>
+
+<body <?php echo is_rtl() ? 'rightmargin' : 'leftmargin'; ?>="0" marginwidth="0" topmargin="0" marginheight="0"
+	offset="0">
+	<div id="wrapper" dir="<?php echo is_rtl() ? 'rtl' : 'ltr'; ?>">
+		<table id="width-wrapper" border="0" align="center" cellpadding="0" cellspacing="0" height="100%">
+			<tr>
+				<td align="center" valign="top">
+
+					<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_container">
+						<tr>
+							<td valign="top">
+								<div class="header-wrapper">
+									<img src="<?php echo get_template_directory_uri(); ?>/img/emails/wukiyo-logo.png"
+										alt="Wukiyo logo">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" valign="top">
+								<!-- Body -->
+								<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_body">
+									<tr>
+										<td valign="top" id="body_content">
+											<!-- Content -->
+											<table border="0" cellpadding="20" cellspacing="0" width="100%">
+												<tr>
+													<td valign="top">
+														<div id="body_content_inner">
